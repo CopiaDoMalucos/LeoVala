@@ -1,0 +1,87 @@
+#accordion-container {
+	font-size: 13px;
+	background: black;
+	padding: 5px 10px 10px 10px;
+	border: 1px solid #444444;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	-moz-box-shadow: 0 5px 15px #444444;
+	-webkit-box-shadow: 0 5px 15px #444444;
+	box-shadow: 0 5px 15px #444444;
+}
+
+.accordion-header {
+	font-size: 16px;
+	background: #282828;
+	margin: 5px 0 0 0;
+	padding: 5px 20px;
+	border: 1px solid #444444;
+	cursor: pointer;
+	color: #FFFFFF;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	font-weight:normal;
+	font-family: Arial, Verdana, Helvetica, sans-serif;
+}
+
+.active-header {
+	-moz-border-radius: 5px 5px 0 0;
+	-webkit-border-radius: 5px 5px 0 0;
+	border-radius: 5px 5px 0 0;
+	background: url(images/active-header.gif) #282828;
+	background-repeat: no-repeat;
+	background-position: right 50%;
+}
+
+.active-header:hover {
+	background: url(images/active-header.gif) #282828;
+	background-repeat: no-repeat;
+	background-position: right 50%;
+}
+
+.inactive-header {
+	background: url(images/inactive-header.gif) #282828;
+	background-repeat: no-repeat;
+	background-position: right 50%;
+}
+
+.inactive-header:hover {
+	background: url(images/inactive-header.gif) #282828;
+	background-repeat: no-repeat;
+	background-position: right 50%;
+}
+
+.accordion-content {
+	display: none;
+	padding: 20px;
+	background: #111111;
+	border: 1px solid #444444;
+	border-top: 0;
+	-moz-border-radius: 0 0 5px 5px;
+	-webkit-border-radius: 0 0 5px 5px;
+	border-radius: 0 0 5px 5px;
+}
+
+/* Inset, by Dan Eden */
+
+		
+.accordion-hr {
+
+	width:100%;    
+	border: 0;
+	height: 0;
+	border-top: 1px solid rgba(0, 0, 0, 0.1);
+	border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+
+}
+
+.accordion-left {
+	float: left;
+}
+.accordion-right {
+	font-size:14;
+	font-weight:bold;
+	float: right;
+}

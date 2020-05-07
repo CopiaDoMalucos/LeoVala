@@ -1,0 +1,12 @@
+<?xml version="1.0" standalone="yes"?>
+<aacplayer>
+	<station>Player Stream Jei</station>
+	<caption>Radio MS ao ViVo</caption>
+	<statusscriptlink></statusscriptlink>
+	<facebooklink>http://www.facebook.com/groups/242957942441666/</facebooklink>
+	<twitterlink>https://twitter.com/MalucosShare1</twitterlink>
+	<emaillink>#</emaillink>
+	<autoplay>yes</autoplay>
+<rtmp>rtmp://rtmp1.adcast.com.br/19890</rtmp>
+ <streamaddress>http://stm16.adcast.com.br:19890</streamaddress>
+</aacplayer>

@@ -1,0 +1,33 @@
+.hand {
+	cursor: pointer;
+}
+.notification-border-n {
+	border: 1px solid #3c74ba;
+	background-color: #f3f8fc;
+	color: #2b2b2b;
+}
+.notification-th-n {
+	background: #578bca url('../images/notification_th_n.gif') repeat-x;
+	height: 19px;
+}
+.notification-title-n { /* Notification message */
+	color: #ffffff;
+	font: bold 12px tahoma, verdana, arial, sans-serif;
+}
+.notification-body {
+	padding: 6px 10px;
+	text-align: justify;
+}
+.notification-border-e {
+	border: 1px solid #b71408;
+	background-color: #fcf3f3;
+	color: #2b2b2b;
+}
+.notification-th-e {
+	background: #de3e37 url('../images/notification_th_e.gif') repeat-x;
+	height: 19px;
+}
+.notification-title-e { /* Error message */
+	color: #ffffff;
+	font: bold 12px tahoma, verdana, arial, sans-serif;
+}

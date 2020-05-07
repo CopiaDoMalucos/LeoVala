@@ -1,0 +1,383 @@
+@import url('nav.css');
+html, body { margin: 0px; padding: 0px; min-height: 100%; width: 100%; }
+/*********************************
+STYLE RESETS
+*********************************/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
+	padding: 0;
+	border: 0;
+	text-decoration: none;
+}
+ol, ul {
+	list-style: none;
+	list-style-position: inside;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after, q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+ input::-moz-focus-inner, a:focus {
+border: 0;
+}
+input, select {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	background-color: #FFFFFF;
+	margin: 2px;
+	border: 1px solid #222;
+}
+textarea {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	background-color: #FFFFFF;
+	border: 1px solid #222;
+	padding: 7px;
+	margin: 2px;
+}
+a {
+	outline: none;
+}
+body {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	background-repeat: no-repeat;
+	background-position: center top;
+	background-attachment: fixed;
+	color: #000000;
+}
+#wrapper {
+	top: 0;
+	width: 100%;
+	position: absolute;
+	padding: 0px;
+	left: 0px;
+	margin: 0px;
+	min-height: 100%;
+	background-repeat: repeat-x;
+	background-position: bottom;
+}
+.selectors {
+	display: block;
+	position: relative;
+	height: 24px;
+	margin-top: 6px;
+	margin-bottom: 4px;
+	padding-top: 1px;
+	padding-right: 1px;
+	padding-bottom: 1px;
+	padding-left: 20px;
+}
+.wrapper-action {
+	display: block;
+	width: 100%;
+	height: 45px;
+	position: fixed;
+	top: 0px;
+	z-index: 999;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #AAA;
+	background: rgb(0,0,0);
+	background: -moz-linear-gradient(top, rgba(0,0,0,1) 1%, rgba(51,51,51,1) 98%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,rgba(0,0,0,1)), color-stop(98%,rgba(51,51,51,1)));
+	background: -webkit-linear-gradient(top, rgba(0,0,0,1) 1%,rgba(51,51,51,1) 98%);
+	background: -o-linear-gradient(top, rgba(0,0,0,1) 1%,rgba(51,51,51,1) 98%);
+	background: -ms-linear-gradient(top, rgba(0,0,0,1) 1%,rgba(51,51,51,1) 98%);
+	background: linear-gradient(top, rgba(0,0,0,1) 1%,rgba(51,51,51,1) 98%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#333333',GradientType=0 );
+}
+.wrapper-action-2 {
+	position: relative;
+	display: block;
+	width: 1100px;
+	height: 100%;
+	overflow: hidden;
+	margin-top: 0;
+	margin-right: auto;
+	margin-bottom: 0;
+	margin-left: auto;
+}
+.action-toggle {
+	position: fixed;
+	top: 0;
+	z-index: 99;
+	width: 30px;
+	height: 45px;
+	cursor: pointer;
+	background-image: url(../img/action-tab.png);
+}
+.container {
+	padding: 0px;
+	margin-top: 0px;
+	margin-right: auto;
+	margin-bottom: 0px;
+	margin-left: auto;
+}
+.header {
+	display: block;
+	margin: 0px;
+	padding: 0px;
+	height: 130px;
+	width: 100%;
+	position: relative;
+}
+.logo {
+	padding: 0px;
+	height: 130px;
+	width: 500px;
+	margin-top: 0px;
+	margin-right: auto;
+	margin-bottom: 0px;
+	margin-left: auto;
+	cursor: pointer;
+}
+
+#nav {
+	margin: 0px;
+	padding: 0px;
+	height: 45px;
+	width: 100%;
+	border: 2px solid #FFFFFF;
+}
+.content {
+	display: block;
+	margin: 0px;
+	width: 100%;
+	padding-top: 4px;
+	padding-bottom: 4px;
+	position: relative;
+}
+.lcol {
+	display: block;
+	margin: 0px;
+	width: 190px;
+	padding: 0px;
+	background-image: url(../img/alt_04.png);
+	border: 1px solid #555;
+}
+.mcol {
+	padding: 0px;
+	width: auto;
+}
+.footer {
+	clear: both;
+	text-align: center;
+	padding-top: 10px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+	padding-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+	font-size: 12px;
+	line-height: 15px;
+}
+.myBlock {
+	display: block;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 8px;
+	margin-left: 0px;
+	padding-top: 7px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+	padding-left: 0px;
+	-moz-border-radius: 6px;
+	border-radius: 6px;
+	-moz-box-shadow: 0 2px 3px 0px #111;
+	-webkit-box-shadow: 0 2px 3px 0px#111;
+	box-shadow: 0 2px 3px 0px #111;
+	border: 1px solid #000000;
+	background-color: #FFFFFF;
+}
+.myBlock-head {
+	display: block;
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-top-color: #333333;
+	border-right-color: #666666;
+	border-bottom-color: #999999;
+	border-left-color: #666666;
+}
+.myBlock-Caption {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	line-height: 30px;
+	font-weight: bold;
+	color: #FFFFFF;
+	text-align: center;
+	white-space: nowrap;
+	display: block;
+	margin: 0px;
+	padding: 0px;
+	height: 30px;
+	width: 100%;
+}
+.myBlock-content {
+	padding-top: 5px;
+	text-align: left;
+}
+.mcol .myBlock {
+	margin: 0px;
+	padding: 0px;
+	width: 100%;
+}
+.myFrame {
+	display: block;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 8px;
+	margin-left: 0px;
+	padding-top: 7px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+	padding-left: 0px;
+	-moz-border-radius: 6px;
+	border-radius: 6px;
+	-moz-box-shadow: 0 2px 3px 0px #111;
+	-webkit-box-shadow: 0 2px 3px 0px#111;
+	box-shadow: 0 2px 3px 0px #111;
+	border: 1px solid #000000;
+	background-color: #FFFFFF;
+}
+.myFrame-head {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	line-height: 30px;
+	font-weight: bold;
+	color: #666666;
+	text-align: left;
+	display: block;
+	padding: 0px;
+	height: 30px;
+	width: 100%;
+	text-indent: 10px;
+	background: rgb(221,221,221);
+	background: -moz-linear-gradient(top, rgba(221,221,221,1) 0%, rgba(201,201,201,1) 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(221,221,221,1)), color-stop(100%,rgba(201,201,201,1)));
+	background: -webkit-linear-gradient(top, rgba(221,221,221,1) 0%,rgba(201,201,201,1) 100%);
+	background: -o-linear-gradient(top, rgba(221,221,221,1) 0%,rgba(201,201,201,1) 100%);
+	background: -ms-linear-gradient(top, rgba(221,221,221,1) 0%,rgba(201,201,201,1) 100%);
+	background: linear-gradient(top, rgba(221,221,221,1) 0%,rgba(201,201,201,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dddddd', endColorstr='#c9c9c9',GradientType=0 );
+	margin-right: 0px;
+	margin-bottom: 6px;
+	margin-left: 0px;
+	border-top-width: 1px;
+	border-bottom-width: 1px;
+	border-top-style: solid;
+	border-bottom-style: solid;
+	border-top-color: #CCC;
+	border-bottom-color: #BBB;
+}
+.myFrame-content  {
+	margin: 0px;
+	padding: 5px;
+}
+.myFrame-content table {
+	margin-top: 0px;
+	margin-right: auto;
+	margin-bottom: 0px;
+	margin-left: auto;
+}
+.clearfloat {
+	clear:both;
+	height:0;
+	font-size: 1px;
+	line-height: 0px;
+}
+.mySearch {
+	height: 24px;
+	width: 234px;
+	padding: 0px;
+	clear: right;
+	float: right;
+	display: block;
+	margin: 0px;
+	position: relative;
+	background-color: transparent;
+}
+.mySearch form {
+	margin: 0px;
+	padding: 0px;
+	height: 24px;
+	width: 234px;
+	background-color: transparent;
+}
+.mySearch form fieldset {
+	margin: 0px;
+	padding: 0px;
+	height: 24px;
+	width: 234px;
+	border: 0px none;
+	background-color: transparent;
+}
+.mySearch form fieldset input.mySearch-t {
+	display: block;
+	height: 21px;
+	width: 160px;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	font-size: 13px;
+	line-height: 20px;
+	background-image: url(../img/search_i.png);
+	background-color: transparent;
+	margin-top: 1px;
+	margin-right: 0px;
+	margin-bottom: 1px;
+	margin-left: 0px;
+	padding-top: 2px;
+	padding-right: 1px;
+	padding-bottom: 1px;
+	padding-left: 1px;
+	border: 0px none;
+	text-indent: 5px;
+	color: #333;
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: bold;
+}
+.mySearch form fieldset input.mySearch-t:focus {
+	color: #000000;
+	font-weight: bold;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 13px;
+}
+.mySearch form fieldset input.mySearch-b {
+	padding: 0px;
+	height: 24px;
+	width: 68px;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	font-size: 12px;
+	font-weight: bold;
+	color: #FFF;
+	margin-top: 1px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+	background-image: url(../img/search_b.png);
+	background-repeat: no-repeat;
+	background-position: center top;
+	cursor: pointer;
+	border: 0px none;
+}
+
+.mySearch form fieldset input.mySearch-b:hover {
+	background-position: center bottom;
+}

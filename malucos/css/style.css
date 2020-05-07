@@ -1,0 +1,54 @@
+*{ margin:0; padding:0;}
+
+
+#conteudo{ 
+	width:1000px; 
+	margin: 0 auto; 
+	min-height:1000px;
+	background:#FFF;
+}
+
+#mensagens{
+	position:fixed;
+	bottom:0;
+	left:0;
+	width:400px;
+	margin-bottom: 10px;	
+}
+
+#mensagens ul{
+	list-style:none;
+	float:left;
+}
+
+#mensagens ul li{
+	float:left;
+	margin-top:10px;
+	margin-left:10px;
+	background: rgba(112,147,219,0.7);
+	height: 50px;
+	width: 360px;
+	padding: 10px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+
+#mensagens ul li .fechar{
+	float:right;
+	color:#FFF;
+	text-decoration:none;
+	font: 15px Verdana;
+}
+
+#mensagens ul li h3{
+	margin-bottom:5px;
+	font: 15px Trebuchet MS;
+	color: #333;
+	font-weight:bold;
+}
+
+#mensagens ul li p{
+	font: 13px Trebuchet MS;
+	color: #666;
+}

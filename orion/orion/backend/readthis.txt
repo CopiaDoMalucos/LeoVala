@@ -1,0 +1,7 @@
+all the files alone go in document root...
+
+/ajshoutbox/ goes into each /themes/theme/images/ folder
+
+images goes into /images/
+
+backend/ping.php to backend.
