@@ -1,4 +1,0 @@
-<?
-echo"test";
-print("test");
-?>
