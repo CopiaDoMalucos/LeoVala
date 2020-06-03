@@ -3,76 +3,61 @@
 ############################################################
 #######                                             ########
 #######                                             ########
-#######           www.brshares.com 2.0              ########
+#######           asylumsahre.net 1.0               ########
 #######                                             ########
 #######                                             ########
-############################################################                       
+############################################################                         
 
               
 error_reporting(E_ALL ^ E_NOTICE);
 require_once("backend/mysql.php");
 require_once("backend/config.php");
 require_once("backend/mysql.class.php");
-
 @mysql_connect($mysql_host, $mysql_user, $mysql_pass) or err('dbconn: mysql_connect: ' . mysql_error());
 @mysql_select_db($mysql_db) or err('dbconn: mysql_select_db: ' . mysql_error());
-
 $MEMBERSONLY = $site_config["MEMBERSONLY"];
 $MEMBERSONLY_WAIT = $site_config["MEMBERSONLY_WAIT"];
 
 $_GET = array_map_recursive("unesc", $_GET);
-
 //START FUNCTIONS
 function array_map_recursive ($callback, $array) {
 	$ret = array();
-
 	if (!is_array($array))
 		return $callback($array);
-
 	foreach ($array as $key => $val) {
 		$ret[$key] = array_map_recursive($callback, $val);
 	}
 	return $ret;
 }
-
-
 function unesc($x) {
 	if (get_magic_quotes_gpc())
 		return stripslashes($x);
 	return $x;
 }
-
 function is_valid_id($id) {
 	return is_numeric($id) && ($id > 0) && (floor($id) == $id);
 }
-
 function sqlesc($x) {
     return "'".mysql_real_escape_string($x)."'";
 }
-
 function err($msg) {
    mysql_close();
    return benc_resp_raw("d".benc_str("failure reason").benc_str($msg)."e");
 }
-
 function benc_str($s) {
 	return strlen($s) . ":$s";
 }
-
 function benc_int($i) {
 	return "i" . $i . "e";
 }
-
 function benc_resp_raw($x) {
 	header("Content-Type: text/plain");
 	header("Pragma: no-cache");
-
 	if (extension_loaded('zlib') && !ini_get('zlib.output_compression') && $_SERVER["HTTP_ACCEPT_ENCODING"] == "gzip") {
 		header("Content-Encoding: gzip");
 		echo gzencode($x, 9, FORCE_GZIP);
 	} else
 		print($x);
-
 	exit();
 }
 
@@ -210,13 +195,13 @@ $res = SQL_Query_exec("SELECT $torrentfields FROM torrents WHERE info_hash=".sql
 $torrent = mysql_fetch_assoc($res);
 
 if (!$torrent)
-    err("Torrent nao foi encontrado baixe novamente - hash = " . $info_hash);
+    err("Torrent not found on this tracker - hash = " . $info_hash);
 
 $torrentid = $torrent["id"];
 
 
 //Now get data from peers table
-$peerlimit = 999999999;
+$peerlimit = 999999999999999;
 $numpeers = $torrent["numpeers"];
 if ($numpeers > $peerlimit){
     $limit = "ORDER BY RAND() LIMIT $peerlimit";
@@ -244,9 +229,6 @@ $resp .= "l{$peers}e";
 $resp .= "ee";
 
 $selfwhere = "torrent = $torrentid AND peer_id = ".sqlesc($peer_id);
-
-
-
 // FILL $SELF WITH DETAILS FROM PEERS TABLE (CONNECTING PEERS DETAILS)
 if (!isset($self)){
 	$res = SQL_Query_exec("SELECT $peerfields FROM peers WHERE $selfwhere");
@@ -286,24 +268,20 @@ if (!isset($self)){ //IF PEER IS NOT IN PEERS TABLE DO THE WAIT TIME CHECK
     $upthis = max(0, $uploaded - $self["uploaded"]);
     $downthis = max(0, $downloaded - $self["downloaded"]);
     if (($upthis > 0 || $downthis > 0) && is_valid_id($userid)){
-				SQL_Query_exec("UPDATE `snatched_t` SET `uload` = `uload` + '$upthis', `dload` = `dload` + '$downthis', `utime` = '".gmtime()."' WHERE `tid` = '$torrentid' AND `uid` = '$userid'");           
+				SQL_Query_exec("UPDATE `snatched_t` SET `uload` = `uload` + '$upthis', `dload` = `dload` - '$downthis', `utime` = '".gmtime()."' WHERE `tid` = '$torrentid' AND `uid` = '$userid'");           
 
 	   if ($torrent["freeleech"] == 1 || $user["freeleechuser"] == "yes" || $user["class"] == 70 || $user["class"] == 71){
-			SQL_Query_exec("UPDATE users SET uploaded = uploaded + $upthis WHERE id=$userid") or err("Tracker error: Unable to update stats");
+			SQL_Query_exec("UPDATE users SET uploaded = uploaded - $upthis WHERE id=$userid") or err("Tracker error: Unable to update stats");
 			
 		}else{
-			SQL_Query_exec("UPDATE users SET uploaded = uploaded + $upthis, downloaded = downloaded + $downthis WHERE id=$userid") or err("Tracker error: Unable to update stats");
-		
-		
+			SQL_Query_exec("UPDATE users SET uploaded = uploaded - $upthis, downloaded = downloaded - $downthis WHERE id=$userid") or err("Tracker error: Unable to update stats");
 		}
     }
 
 }//END WAIT AND STATS UPDATE
 
 $updateset = array();
-
 ////////////////// NOW WE DO THE TRACKER EVENT UPDATES ///////////////////
-
 if ($event == "stopped") { 
 // UPDATE "STOPPED" EVENT
         SQL_Query_exec("DELETE FROM peers WHERE $selfwhere");
@@ -313,7 +291,6 @@ if ($event == "stopped") {
             else
                 $updateset[] = "leechers = leechers - 1";
         }
-		
 }
 
 if ($event == "completed") { // UPDATE "COMPLETED" EVENT    
